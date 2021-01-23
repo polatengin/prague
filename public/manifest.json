@@ -1,0 +1,8 @@
+{
+  "short_name": "Retrospective Extension",
+  "name": "Retrospective Extension for Azure DevOps",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
