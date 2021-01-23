@@ -2,6 +2,7 @@ node_modules/
 
 .eslintcache
 
+build/
 bundle.css
 
 npm-debug.log*
