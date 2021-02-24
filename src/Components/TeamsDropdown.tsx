@@ -21,7 +21,7 @@ export const TeamsDropdown: FunctionComponent = () => {
           </span>
         </button>
         { isOpen &&
-        <div className="absolute w-full border border-gray-300 dark:border-gray-700 rounded-sm shadow-lg">
+        <div className="absolute w-full border bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700 rounded-sm shadow-lg">
           <div onClick={() => { setIsOpen(false); }} className="inset-0 fixed"></div>
           <ul tabIndex={-1} role="listbox" className="max-h-56 rounded-sm text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
             <li className="hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer select-none relative py-2 pl-3 pr-9">
