@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from 'react';
-import { Column } from '../Components/Column';
 
+import { Column } from '../Components/Column';
 import { Notification } from '../Components/Notification';
 import { TeamsDropdown } from '../Components/TeamsDropdown';
 import { WhatsNewButton } from '../Components/WhatsNewButton';
