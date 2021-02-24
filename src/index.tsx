@@ -7,4 +7,4 @@ import { App } from './Views/App';
 
 import "./bundle.css"
 
-ReactDOM.render(<React.StrictMode><App /></React.StrictMode>,document.getElementById('root'));
+ReactDOM.render(<AppContext.Provider value=""><React.StrictMode><App /></React.StrictMode></AppContext.Provider>,document.getElementById('root'));
