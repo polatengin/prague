@@ -26,7 +26,7 @@ export const App: FunctionComponent = () => {
         </div>
         <div className="mx-4 my-2">Tabs</div>
         <div className="h-auto">
-          { notification && <Notification message={notification} onHide={() => setNotification("")} /> }
+          { notification && <Notification message={notification} onHide={() => setNotification("") } /> }
         </div>
         <div className="grid grid-flow-col gap-x-0.5 auto-cols-fr flex-grow">
           <div className="bg-gray-100 dark:bg-gray-800">
