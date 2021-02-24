@@ -23,4 +23,5 @@ export const Notification: FunctionComponent<Props> = (props: Props) => {
       </div>
     </div>
   );
+
 };
