@@ -14,17 +14,12 @@ jobs:
 
       - name: Deploy Website to Azure Storage
         uses: javiermagro14/azure-static-website-deploy@v1.0
-        env:
-          CLIENT_ID: ${{ secrets.CLIENT_ID }}
-          TENANT_ID: ${{ secrets.TENANT_ID }}
-          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-          SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
         with:
           SOURCE_DIR: "build"
-          AZURE_CLIENT_ID: ${CLIENT_ID}
-          AZURE_TENANT_ID: ${TENANT_ID}
-          AZURE_SECRET: ${CLIENT_SECRET}
-          AZURE_SUBSCRIPTION_ID: ${SUBSCRIPTION_ID}
+          AZURE_CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          AZURE_TENANT_ID: ${{ secrets.TENANT_ID }}
+          AZURE_SECRET: ${{ secrets.CLIENT_SECRET }}
+          AZURE_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTION_ID }}
           AZURE_STORAGE_ACCOUNT_NAME: "geekdaystorage"
           AZURE_INDEX_DOCUMENT_NAME: "index.html"
           AZURE_ERROR_DOCUMENT_NAME: "error.html"
