@@ -1,4 +1,4 @@
-name: ci_pipeline
+name: ci_pipeline_static_web_apps
 
 on:
   push:
