@@ -13,14 +13,15 @@ jobs:
         run: npm install && npm run build
         
       - name: Parse Azure Credentials
+        id: azure
         env:
           AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
         run: |
           AZURE_CREDENTIALS=${AZURE_CREDENTIALS}
-          CLIENT_ID=${AZURE_CREDENTIALS} | jq -r ".clientId"
-          TENANT_ID=${AZURE_CREDENTIALS} | jq -r ".tenantId"
-          CLIENT_SECRET=${AZURE_CREDENTIALS} | jq -r ".clientSecret"
-          SUBSCRIPTION_ID=${AZURE_CREDENTIALS} | jq -r ".subscriptionId"
+          echo "::set-output name=CLIENT_ID::$(${AZURE_CREDENTIALS} | jq -r ".clientId")
+          echo "::set-output name=TENANT_ID::${AZURE_CREDENTIALS} | jq -r ".tenantId")
+          echo "::set-output name=CLIENT_SECRET::${AZURE_CREDENTIALS} | jq -r ".clientSecret")
+          echo "::set-output name=SUBSCRIPTION_ID::${AZURE_CREDENTIALS} | jq -r ".subscriptionId")
 
       - name: Deploy Website to Azure Storage
         uses: javiermagro14/azure-static-website-deploy@v1.0
@@ -28,10 +29,10 @@ jobs:
           CLIENT_ID: ${CLIENT_ID}
         with:
           SOURCE_DIR: "build"
-          AZURE_CLIENT_ID: ${CLIENT_ID}
-          AZURE_TENANT_ID: ${TENANT_ID}
-          AZURE_SECRET: ${CLIENT_SECRET}
-          AZURE_SUBSCRIPTION_ID: ${SUBSCRIPTION_ID}
+          AZURE_CLIENT_ID: ${{steps.azure.outputs.CLIENT_ID}}
+          AZURE_TENANT_ID: ${{steps.azure.outputs.TENANT_ID}}
+          AZURE_SECRET: ${{steps.azure.outputs.CLIENT_SECRET}}
+          AZURE_SUBSCRIPTION_ID: ${{steps.azure.outputs.SUBSCRIPTION_ID}}
           AZURE_STORAGE_ACCOUNT_NAME: "geekdaystorage"
           AZURE_INDEX_DOCUMENT_NAME: "index.html"
           AZURE_ERROR_DOCUMENT_NAME: "error.html"
