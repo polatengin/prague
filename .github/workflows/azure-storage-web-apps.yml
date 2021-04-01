@@ -21,4 +21,4 @@ jobs:
         with:
           azcliversion: 2.0.72
           inlineScript: |
-            az storage blob upload-batch --account-name "geekdaystorage" -d "$web" -s "build"
+            az storage blob upload-batch --account-name "geekdayeventstorage" -d "$web" -s "build"
