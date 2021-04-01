@@ -18,10 +18,10 @@ jobs:
           AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
         run: |
           AZURE_CREDENTIALS=${AZURE_CREDENTIALS}
-          echo "::set-output name=CLIENT_ID::$(${AZURE_CREDENTIALS} | jq -r ".clientId")
-          echo "::set-output name=TENANT_ID::${AZURE_CREDENTIALS} | jq -r ".tenantId")
-          echo "::set-output name=CLIENT_SECRET::${AZURE_CREDENTIALS} | jq -r ".clientSecret")
-          echo "::set-output name=SUBSCRIPTION_ID::${AZURE_CREDENTIALS} | jq -r ".subscriptionId")
+          echo "::set-output name=CLIENT_ID::$( ${AZURE_CREDENTIALS} | jq -r ".clientId" )"
+          echo "::set-output name=TENANT_ID::$( ${AZURE_CREDENTIALS} | jq -r ".tenantId" )"
+          echo "::set-output name=CLIENT_SECRET::$( ${AZURE_CREDENTIALS} | jq -r ".clientSecret" )"
+          echo "::set-output name=SUBSCRIPTION_ID::$( ${AZURE_CREDENTIALS} | jq -r ".subscriptionId" )"
 
       - name: Deploy Website to Azure Storage
         uses: javiermagro14/azure-static-website-deploy@v1.0
