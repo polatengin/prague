@@ -19,7 +19,7 @@ jobs:
       - name: Upload to blob storage
         uses: azure/CLI@v1
         with:
-          azcliversion: 2.0.72
+          azcliversion: 2.21.0
           inlineScript: |
             KEY=$(az storage account keys list --resource-group "geekday-event-rg" --account-name "geekdayeventstorage" --query "[0].value" --output tsv)
             az storage blob upload-batch --account-name "geekdayeventstorage" --account-key="${KEY}" --destination "$web" --source "build"
