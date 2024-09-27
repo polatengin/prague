@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "_GitHubValue_ cli tool that estimates the worth of a _GitHub_ account.",
   "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+  },
   "bin": {
     "githubvalue": "./_dist/index.js"
   },
