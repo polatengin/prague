@@ -1,3 +1,3 @@
 # Prague project
 
-_GitValue_ cli tool that estimates the worth of a _GitHub_ account.
+_GitHubValue_ cli tool that estimates the worth of a _GitHub_ account.
