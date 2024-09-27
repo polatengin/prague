@@ -1,3 +1,3 @@
 # Prague project
 
-UI of the Retrospective Extension is remade in this repo
+_GitValue_ cli tool that estimates the worth of a _GitHub_ account.
