@@ -4,6 +4,7 @@
   "description": "_GitHubValue_ cli tool that estimates the worth of a _GitHub_ account.",
   "main": "index.js",
   "scripts": {
+    "prebuild": "rm -rf _dist",
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node _dist/index.js",
