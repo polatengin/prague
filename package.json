@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "prestart": "npm run build",
+    "start": "node _dist/index.js",
   },
   "bin": {
     "githubvalue": "./_dist/index.js"
