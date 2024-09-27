@@ -1,0 +1,16 @@
+{
+  "name": "prague",
+  "version": "1.0.0",
+  "description": "_GitHubValue_ cli tool that estimates the worth of a _GitHub_ account.",
+  "main": "index.js",
+  "bin": {
+    "githubvalue": "./_dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "ts-node": "10.9.2",
+    "typescript": "5.6.2"
+  }
+}
