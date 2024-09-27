@@ -7,6 +7,7 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node _dist/index.js",
+    "test": "ts-node tests/index.test.ts"
   },
   "bin": {
     "githubvalue": "./_dist/index.js"
