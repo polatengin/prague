@@ -12,7 +12,7 @@
     "test": "ts-node tests/index.test.ts"
   },
   "bin": {
-    "githubvalue": "./_dist/index.js"
+    "prague": "./_dist/index.js"
   },
   "keywords": [],
   "author": "",
