@@ -77,3 +77,35 @@ export const fetchAccountDetails = async (accountName: string): Promise<AccountD
   const path = `users/${accountName}`;
   return await query(path) as AccountDetails;
 }
+
+type UserEvent = {
+  id: string;
+  type: string;
+  actor: {
+    id: number;
+    login: string;
+    display_login: string;
+    gravatar_id: string;
+    url: string;
+    avatar_url: string;
+  };
+  repo: {
+    id: number;
+    name: string;
+    url: string;
+  };
+  public: boolean;
+  created_at: string;
+  org?: {
+    id: number;
+    login: string;
+    gravatar_id: string;
+    url: string;
+    avatar_url: string;
+  };
+};
+
+export const fetchUserEvents = async (accountName: string): Promise<UserEvent[]> => {
+  const path = `users/${accountName}/events`;
+  return await query(path) as UserEvent[];
+}
