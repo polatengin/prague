@@ -58,3 +58,14 @@ jobs:
               repo: context.repo.repo,
               tag_name: version
             });
+            const fileName = `prague_${version}.deb`;
+            const debFileContent = fs.readFileSync(fileName);
+            await github.rest.repos.uploadReleaseAsset({
+              url: releaseResponse.data.upload_url,
+              headers: {
+                'content-type': 'application/octet-stream',
+                'content-length': debFileContent.length,
+              },
+              name: fileName,
+              data: debFileContent,
+            });
