@@ -83,5 +83,4 @@ const flags = {
     console.log(`10 * public_repos_count + 5 * public_gists_count + 2 * followers_count + 3 * sum(stargazers_count) + 3 * sum(forks_count) - 2 * sum(open_issues_count)`);
     console.log(`(10 * ${value.public_repos_count}) + (5 * ${value.public_gists_count}) + (2 * ${value.followers_count}) + (3 * ${value.repos.reduce((acc, repo) => acc + repo.stargazers_count, 0)}) + (3 * ${value.repos.reduce((acc, repo) => acc + repo.forks_count, 0)}) - (2 * ${value.repos.reduce((acc, repo) => acc + repo.open_issues_count, 0)})`);
   }
-
 })();
