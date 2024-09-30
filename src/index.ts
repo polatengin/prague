@@ -72,4 +72,9 @@ const flags = {
     console.log(`Estimated value:`);
     console.log(`${estimatedValue}`);
   }
+
+  if (flags.printRawJson) {
+    console.log(`Raw JSON data:`);
+    console.log(JSON.stringify(value, null, 2));
+  }
 })();
