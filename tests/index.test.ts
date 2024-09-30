@@ -15,3 +15,15 @@ describe('index.ts', () => {
     // Assert
     strictEqual(actual, expected);
   });
+
+  it('should exit with error when an invalid GitHub account name is provided', () => {
+    // Arrange
+    const expected = '"invalid account name" is not a valid GitHub account name.';
+    let actual = '';
+
+    // Act
+    actual = parse('invalid account name');
+
+    // Assert
+    strictEqual(actual, expected);
+  });
