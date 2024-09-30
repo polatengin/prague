@@ -27,3 +27,16 @@ describe('index.ts', () => {
     // Assert
     strictEqual(actual, expected);
   });
+
+  it('should log a valid GitHub account name', () => {
+    // Arrange
+    const expected = '';
+    let actual = '';
+
+    // Act
+    actual = parse('validaccountname');
+
+    // Assert
+    strictEqual(actual, expected);
+  });
+});
