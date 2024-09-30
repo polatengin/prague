@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import util from 'util';
+
 import { fetchAccountDetails, fetchRepoDetails, fetchUserEvents, GitHubValueDetails, validateAccountName } from "./utils";
 
 const args = process.argv.slice(2);
