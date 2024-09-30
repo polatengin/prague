@@ -67,4 +67,9 @@ const flags = {
                          (3 * value.repos.reduce((acc, repo) => acc + repo.stargazers_count, 0)) +
                          (3 * value.repos.reduce((acc, repo) => acc + repo.forks_count, 0)) -
                          (-2 * value.repos.reduce((acc, repo) => acc + repo.open_issues_count, 0));
+
+  if (flags.printEstimatedValue) {
+    console.log(`Estimated value:`);
+    console.log(`${estimatedValue}`);
+  }
 })();
