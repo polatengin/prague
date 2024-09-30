@@ -30,6 +30,8 @@ jobs:
           mkdir -p "prague-${VERSION}/usr/local/src/prague"
           cp ./_dist/* "prague-${VERSION}/usr/local/src/prague"
 
+          chmod +x "prague-${VERSION}/usr/local/src/prague/index.js"
+
           dpkg-deb --build "prague-${VERSION}"
 
       - name: "Create release"
