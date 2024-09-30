@@ -18,10 +18,11 @@ if (err !== "") {
   process.exit(1);
 }
 
+const flagArgs = process.argv.map(arg => arg.toLowerCase());
 const flags = {
-  printEstimatedValue : process.argv.includes('--printEstimatedValue'),
-  printRawJson : process.argv.includes('--printRawJson'),
-  printFormula : process.argv.includes('--printFormula'),
+  printEstimatedValue : flagArgs.includes('--printestimatedvalue'),
+  printRawJson : flagArgs.includes('--printrawjson'),
+  printFormula : flagArgs.includes('--printformula'),
 };
 
 (async () => {
