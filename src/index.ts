@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import { parse } from "./inputs";
+
 const args = process.argv.slice(2);
 
 if (args.length === 0) {
@@ -7,11 +9,13 @@ if (args.length === 0) {
   process.exit(1);
 }
 
-const githubAccountName = args[0];
+const accountName = args[0];
 
-if (!/^[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*$/.test(githubAccountName)) {
-  console.error(`Error: "${githubAccountName}" is not a valid GitHub account name.`);
+const err = parse(accountName);
+
+if (err !== "") {
+  console.error(`Error: "${err}"`);
   process.exit(1);
 }
 
-console.log(`Valid GitHub account name provided: ${githubAccountName}`);
+console.log(`Valid GitHub account name provided: ${accountName}`);
