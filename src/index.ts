@@ -75,7 +75,7 @@ const flags = {
 
   if (flags.printEstimatedValue) {
     console.log(`Estimated value:`);
-    console.log(`${estimatedValue}`);
+    console.log(`\$${estimatedValue}`);
   }
 
   if (flags.printFormula) {
