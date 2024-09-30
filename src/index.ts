@@ -75,8 +75,9 @@ const flags = {
   }
 
   if (flags.printEstimatedValue) {
-    console.log(`Estimated value:`);
-    console.log(`\$${estimatedValue}`);
+    console.log();
+    console.log('\x1b[33m%s\x1b[0m', `Estimated value:`);
+    console.log('\x1b[32m%s\x1b[0m', `\$${estimatedValue}`);
   }
 
   if (flags.printFormula) {
