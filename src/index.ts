@@ -71,7 +71,7 @@ const flags = {
 
   if (flags.printRawJson) {
     console.log(`Raw JSON data:`);
-    console.log(JSON.stringify(value, null, 2));
+    console.log(util.inspect(value, { colors: true, depth: null, compact: false }));
   }
 
   if (flags.printEstimatedValue) {
