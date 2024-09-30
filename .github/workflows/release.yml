@@ -51,7 +51,7 @@ jobs:
             });
             const releaseResponse = await github.rest.repos.createRelease({
               draft: false,
-              generate_release_notes: true,
+              generate_release_notes: false,
               name: version,
               owner: context.repo.owner,
               prerelease: false,
