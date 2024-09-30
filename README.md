@@ -9,6 +9,27 @@ _GitHubValue_ cli tool that estimates the value of a _GitHub_ account.
 - `--printEstimatedValue`: Prints _estimated value_ of the given _GitHub Account_
 - `--printFormula`: Prints _formula_ used to calculate _estimated value_ of the given _GitHub Account_
 
+## Installation
+
+Ensure at least _Node v20_ or newer is installed;
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+Download latest version of `prague`;
+
+```bash
+wget https://github.com/polatengin/prague/releases/download/0.0.1/prague-0.0.1.deb
+```
+
+Use `apt` command to start installation
+
+```bash
+sudo apt install -y ./prague-0.0.1.deb
+```
+
 ## Compile, Test and Run
 
 To compile the code, run the following command;
