@@ -31,3 +31,9 @@ export type GitHubValueDetails = {
     created_at: Date;
   }[];
 };
+
+const query = async (path: string) => {
+  const url = `https://api.github.com/${path}`;
+  const response = await fetch(url);
+  return await response.json();
+}
