@@ -1,6 +1,4 @@
-import * as assert from 'node:assert';
+import { describe, it } from 'node:test';
+import { strictEqual } from 'node:assert';
 
-// Example test
-const result = 'Hello!';
-assert.strictEqual(result, 'Hello!', 'Should greet correctly');
-console.log('Tests passed!');
+import { parse } from '../src/inputs';
