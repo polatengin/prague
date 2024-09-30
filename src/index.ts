@@ -26,5 +26,6 @@ const flags = {
 
 (async () => {
   const userDetails = await fetchAccountDetails(accountName);
+  const events = await fetchUserEvents(accountName);
 
 })();
