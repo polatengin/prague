@@ -24,3 +24,7 @@ const flags = {
   printFormula : process.argv.includes('--printFormula'),
 };
 
+(async () => {
+  const userDetails = await fetchAccountDetails(accountName);
+
+})();
