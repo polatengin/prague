@@ -36,20 +36,25 @@ jobs:
         uses: "actions/github-script@v7"
         with:
           script: |
+            const fs = require('fs');
+            const path = './package.json';
+
+            const version = JSON.parse(fs.readFileSync(path, 'utf8')).version;
+
             const tagResponse = await github.rest.git.createTag({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              tag: process.env.VERSION,
-              message: `v${process.env.VERSION}`,
+              tag: version,
+              message: `v${version}`,
               object: context.sha,
               type: 'commit'
             });
             const releaseResponse = await github.rest.repos.createRelease({
               draft: false,
               generate_release_notes: true,
-              name: process.env.VERSION,
+              name: version,
               owner: context.repo.owner,
               prerelease: false,
               repo: context.repo.repo,
-              tag_name: process.env.VERSION
+              tag_name: version
             });
