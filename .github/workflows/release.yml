@@ -1,0 +1,55 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Create Debian package
+        run: |
+          VERSION=$(jq -r '.version' ./package.json)
+
+          mkdir -p "prague-${VERSION}"
+          cp -r ./DEBIAN "prague-${VERSION}"
+
+          mkdir -p "prague-${VERSION}/usr/local/src/prague"
+          cp ./_dist/* "prague-${VERSION}/usr/local/src/prague"
+
+          dpkg-deb --build "prague-${VERSION}"
+
+      - name: "Create release"
+        uses: "actions/github-script@v7"
+        with:
+          script: |
+            const response = await github.rest.git.createTag({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              tag: process.env.VERSION,
+              message: `v${process.env.VERSION}`,
+              object: context.sha,
+              type: 'commit',
+            });
+            const response = await github.rest.repos.createRelease({
+              draft: false,
+              generate_release_notes: true,
+              name: process.env.VERSION,,
+              owner: context.repo.owner,
+              prerelease: false,
+              repo: context.repo.repo,
+              tag_name: process.env.VERSION,,
+            });
