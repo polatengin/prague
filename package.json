@@ -1,6 +1,6 @@
 {
   "name": "prague",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "_GitHubValue_ cli tool that estimates the worth of a _GitHub_ account.",
   "main": "index.js",
   "scripts": {
