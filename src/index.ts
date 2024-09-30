@@ -28,4 +28,5 @@ const flags = {
   const userDetails = await fetchAccountDetails(accountName);
   const events = await fetchUserEvents(accountName);
 
+  const orgs = [...new Set(events.map(event => event.repo.name.split('/')[0]))];
 })();
