@@ -18,5 +18,9 @@ if (err !== "") {
   process.exit(1);
 }
 
+const flags = {
+  printEstimatedValue : process.argv.includes('--printEstimatedValue'),
+  printRawJson : process.argv.includes('--printRawJson'),
+  printFormula : process.argv.includes('--printFormula'),
+};
 
-console.log(`Valid GitHub account name provided: ${accountName}`);
