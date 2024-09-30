@@ -31,4 +31,33 @@ const flags = {
   const orgs = [...new Set(events.map(event => event.repo.name.split('/')[0]))];
   const repos = [...new Set(events.map(event => event.repo.name))];
 
+  const value: GitHubValueDetails = {
+    name: userDetails.login,
+    public_repos_count: userDetails.public_repos,
+    public_gists_count: userDetails.public_gists,
+    created_at: new Date(userDetails.created_at),
+    followers_count: userDetails.followers,
+    orgs: await Promise.all(orgs.map(async org => {
+      const orgDetails = await fetchAccountDetails(org);
+      return {
+        name: orgDetails.login,
+        public_repos_count: orgDetails.public_repos,
+        public_gists_count: orgDetails.public_gists,
+        created_at: new Date(orgDetails.created_at),
+        followers_count: orgDetails.followers
+      };
+    })),
+    repos: await Promise.all(repos.map(async repo => {
+      const repoDetails = await fetchRepoDetails(repo);
+      return {
+        name: repoDetails.name,
+        stargazers_count: repoDetails.stargazers_count,
+        watchers_count: repoDetails.watchers_count,
+        forks_count: repoDetails.forks_count,
+        open_issues_count: repoDetails.open_issues_count,
+        subscribers_count: repoDetails.subscribers_count,
+        created_at: new Date(repoDetails.created_at),
+      };
+    })),
+  };
 })();
