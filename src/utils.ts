@@ -1,4 +1,4 @@
-export const parse = (value: string) => {
+export const validateAccountName = (value: string) => {
   if (!value) {
     return 'Please provide a GitHub account name.';
   }

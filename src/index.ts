@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { parse } from "./inputs";
+import { validateAccountName } from "./utils";
 
 const args = process.argv.slice(2);
 
@@ -11,11 +11,12 @@ if (args.length === 0) {
 
 const accountName = args[0];
 
-const err = parse(accountName);
+const err = validateAccountName(accountName);
 
 if (err !== "") {
   console.error(`Error: "${err}"`);
   process.exit(1);
 }
+
 
 console.log(`Valid GitHub account name provided: ${accountName}`);

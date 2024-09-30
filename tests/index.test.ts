@@ -1,7 +1,7 @@
 import { describe, it } from 'node:test';
 import { strictEqual } from 'node:assert';
 
-import { parse } from '../src/inputs';
+import { validateAccountName } from '../src/utils';
 
 describe('index.ts', () => {
   it('should exit with error when no GitHub account name is provided', () => {
@@ -10,7 +10,7 @@ describe('index.ts', () => {
     let actual = '';
 
     // Act
-    actual = parse('');
+    actual = validateAccountName('');
 
     // Assert
     strictEqual(actual, expected);
@@ -22,7 +22,7 @@ describe('index.ts', () => {
     let actual = '';
 
     // Act
-    actual = parse('invalid account name');
+    actual = validateAccountName('invalid account name');
 
     // Assert
     strictEqual(actual, expected);
@@ -34,7 +34,7 @@ describe('index.ts', () => {
     let actual = '';
 
     // Act
-    actual = parse('validaccountname');
+    actual = validateAccountName('validaccountname');
 
     // Assert
     strictEqual(actual, expected);
