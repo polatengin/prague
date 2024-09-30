@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { validateAccountName } from "./utils";
+import { fetchAccountDetails, fetchRepoDetails, fetchUserEvents, GitHubValueDetails, validateAccountName } from "./utils";
 
 const args = process.argv.slice(2);
 
