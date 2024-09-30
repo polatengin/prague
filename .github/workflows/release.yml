@@ -42,7 +42,7 @@ jobs:
               tag: process.env.VERSION,
               message: `v${process.env.VERSION}`,
               object: context.sha,
-              type: 'commit',
+              type: 'commit'
             });
             const releaseResponse = await github.rest.repos.createRelease({
               draft: false,
@@ -51,5 +51,5 @@ jobs:
               owner: context.repo.owner,
               prerelease: false,
               repo: context.repo.repo,
-              tag_name: process.env.VERSION,,
+              tag_name: process.env.VERSION
             });
