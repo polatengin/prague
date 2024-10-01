@@ -21,13 +21,13 @@ sudo apt-get install -y nodejs
 Download latest version of `prague`;
 
 ```bash
-wget https://github.com/polatengin/prague/releases/download/0.0.3/prague-0.0.3.deb
+wget https://github.com/polatengin/prague/releases/download/0.0.4/prague-0.0.4.deb
 ```
 
 Use `apt` command to start installation
 
 ```bash
-sudo apt install -y ./prague-0.0.3.deb
+sudo apt install -y ./prague-0.0.4.deb
 ```
 
 ## Compile, Test and Run
