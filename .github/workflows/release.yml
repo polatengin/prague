@@ -64,6 +64,10 @@ jobs:
 
           dpkg-deb --build "prague-${VERSION}"
 
+          mv "prague-${VERSION}/DEBIAN" "prague-${VERSION}/debian"
+          sed -i '/Build-Depends/a\\' debian/control
+          debuild -S -us -uc
+
       - name: "Create release"
         uses: "actions/github-script@v7"
         with:
