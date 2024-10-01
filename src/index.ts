@@ -5,6 +5,11 @@ import util from 'util';
 
 import { fetchAccountDetails, fetchRepoDetails, fetchUserEvents, GitHubValueDetails, validateAccountName } from "./utils";
 
+const blue = '\x1b[36m';
+const green = '\x1b[32m';
+const yellow = '\x1b[33m';
+const reset = '\x1b[0m';
+
 const args = process.argv.slice(2);
 
 const paramArgs = args.map(arg => arg.toLowerCase());
@@ -15,6 +20,12 @@ const params = {
   printVersion : paramArgs.includes('--printversion') || paramArgs.includes('--version') || paramArgs.includes('-v'),
   userName : paramArgs.find(arg => !arg.startsWith('--') && !arg.startsWith('-')) || "",
 };
+
+if (params.printVersion) {
+  console.log();
+  console.log(`${yellow}Version:${reset}`);
+  console.log(JSON.parse(readFileSync("package.json", 'utf8')).version);
+}
 
 const err = validateAccountName(params.userName);
 
@@ -66,17 +77,6 @@ if (err !== "") {
                          (3 * value.repos.reduce((acc, repo) => acc + repo.stargazers_count, 0)) +
                          (3 * value.repos.reduce((acc, repo) => acc + repo.forks_count, 0)) -
                          (-2 * value.repos.reduce((acc, repo) => acc + repo.open_issues_count, 0));
-
-  const blue = '\x1b[36m';
-  const green = '\x1b[32m';
-  const yellow = '\x1b[33m';
-  const reset = '\x1b[0m';
-
-  if (params.printVersion) {
-    console.log();
-    console.log(`${yellow}Version:${reset}`);
-    console.log(JSON.parse(readFileSync("package.json", 'utf8')).version);
-  }
 
   if (params.printRawJson) {
     console.log();
