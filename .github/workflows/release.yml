@@ -112,3 +112,4 @@ jobs:
             uploadFileToRelease(releaseResponse.data.upload_url, `prague_${version}_source.changes`);
             uploadFileToRelease(releaseResponse.data.upload_url, `prague_${version}.dsc`);
             uploadFileToRelease(releaseResponse.data.upload_url, `prague_${version}.tar.gz`);
+            uploadFileToRelease(releaseResponse.data.upload_url, `prague_${version}.deb`);
