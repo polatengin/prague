@@ -50,6 +50,12 @@ jobs:
           echo "%:" >> "prague-${VERSION}/DEBIAN/rules"
           echo "	dh \$@" >> "prague-${VERSION}/DEBIAN/rules"
 
+          echo "prague (${VERSION}) unstable; urgency=low" >> "prague-${VERSION}/DEBIAN/changelog"
+          echo "" >> "prague-${VERSION}/DEBIAN/changelog"
+          echo "  * Initial release of Prague." >> "prague-${VERSION}/DEBIAN/changelog"
+          echo "" >> "prague-${VERSION}/DEBIAN/changelog"
+          echo " -- Engin Polat <polatengin@hotmail.com>  Sun, 30 Sep 2024 00:00:00 +0000" >> "prague-${VERSION}/DEBIAN/changelog"
+
           mkdir -p "prague-${VERSION}/usr/local/src/prague"
           cp ./_dist/* "prague-${VERSION}/usr/local/src/prague"
           cp ./package.json "prague-${VERSION}/usr/local/src/prague"
