@@ -4,10 +4,11 @@ _GitHubValue_ cli tool that estimates the value of a _GitHub_ account.
 
 ## Inputs
 
-- `accountName`: GitHub account name
-- `--printRawJson`: Prints raw json data that's used to calculate _GitHub Account Value_
-- `--printEstimatedValue`: Prints _estimated value_ of the given _GitHub Account_
-- `--printFormula`: Prints _formula_ used to calculate _estimated value_ of the given _GitHub Account_
+- `accountName`: GitHub account name.
+- `--printRawJson` (_`--rawjson` `json`_): Prints raw json data that's used to calculate _GitHub Account Value_.
+- `--printEstimatedValue` (_`estimatedvalue`, `value`_): Prints _estimated value_ of the given _GitHub Account_.
+- `--printFormula` (_`formula`_): Prints _formula_ used to calculate _estimated value_ of the given _GitHub Account_.
+- `--printVersion` (_`version`_): Prints _version_ of the `prague` tool.
 
 ## Installation
 
