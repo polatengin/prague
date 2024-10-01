@@ -74,8 +74,20 @@ jobs:
           script: |
             const fs = require('fs');
             const path = './package.json';
-
             const version = JSON.parse(fs.readFileSync(path, 'utf8')).version;
+
+            const uploadFileToRelease = async (releaseUploadUrl, fileName) => {
+              const content = fs.readFileSync(fileName);
+              await github.rest.repos.uploadReleaseAsset({
+                url: releaseUploadUrl,
+                headers: {
+                  'content-type': 'application/octet-stream',
+                  'content-length': content.length,
+                },
+                name: fileName,
+                data: content,
+              });
+            };
 
             const tagResponse = await github.rest.git.createTag({
               owner: context.repo.owner,
