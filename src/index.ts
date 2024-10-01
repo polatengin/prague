@@ -29,7 +29,8 @@ if (params.printVersion) {
 
 const err = validateAccountName(params.userName);
 
-if (err !== "") {
+if (!params.printVersion && err !== "") {
+  console.log();
   console.error(`Error: "${err}"`);
   process.exit(1);
 }
