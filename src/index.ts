@@ -12,26 +12,25 @@ if (args.length === 0) {
   process.exit(1);
 }
 
-const accountName = args[0];
+const paramArgs = args.map(arg => arg.toLowerCase());
+const params = {
+  printEstimatedValue : paramArgs.includes('--printestimatedvalue') || paramArgs.includes('--estimatedvalue') || paramArgs.includes('--value'),
+  printRawJson : paramArgs.includes('--printrawjson') || paramArgs.includes('--rawjson') || paramArgs.includes('--json'),
+  printFormula : paramArgs.includes('--printformula') || paramArgs.includes('--formula'),
+  printVersion : paramArgs.includes('--printversion') || paramArgs.includes('--version') || paramArgs.includes('-v'),
+  userName : paramArgs.find(arg => !arg.startsWith('--') && !arg.startsWith('-')) || "",
+};
 
-const err = validateAccountName(accountName);
+const err = validateAccountName(params.userName);
 
 if (err !== "") {
   console.error(`Error: "${err}"`);
   process.exit(1);
 }
 
-const flagArgs = process.argv.map(arg => arg.toLowerCase());
-const flags = {
-  printEstimatedValue : flagArgs.includes('--printestimatedvalue') || flagArgs.includes('--estimatedvalue') || flagArgs.includes('--value'),
-  printRawJson : flagArgs.includes('--printrawjson') || flagArgs.includes('--rawjson') || flagArgs.includes('--json'),
-  printFormula : flagArgs.includes('--printformula') || flagArgs.includes('--formula'),
-  printVersion : flagArgs.includes('--printversion') || flagArgs.includes('--version') || flagArgs.includes('-v'),
-};
-
 (async () => {
-  const userDetails = await fetchAccountDetails(accountName);
-  const events = await fetchUserEvents(accountName);
+  const userDetails = await fetchAccountDetails(params.userName);
+  const events = await fetchUserEvents(params.userName);
 
   const orgs = [...new Set(events.map(event => event.repo.name.split('/')[0]))];
   const repos = [...new Set(events.map(event => event.repo.name))];
@@ -78,25 +77,25 @@ const flags = {
   const yellow = '\x1b[33m';
   const reset = '\x1b[0m';
 
-  if (flags.printVersion) {
+  if (params.printVersion) {
     console.log();
     console.log(`${yellow}Version:${reset}`);
     console.log(JSON.parse(readFileSync("package.json", 'utf8')).version);
   }
 
-  if (flags.printRawJson) {
+  if (params.printRawJson) {
     console.log();
     console.log(`${yellow}Raw JSON data:${reset}`);
     console.log(util.inspect(value, { colors: true, depth: null, compact: false }));
   }
 
-  if (flags.printEstimatedValue) {
+  if (params.printEstimatedValue) {
     console.log();
     console.log(`${yellow}Estimated value:${reset}`);
     console.log(`${green}\$${estimatedValue}${reset}`);
   }
 
-  if (flags.printFormula) {
+  if (params.printFormula) {
     console.log();
     console.log(`${yellow}Formula:${reset}`);
     console.log(` ${blue}+ ($10 x ${value.public_repos_count}) \t ${reset} ${green}# public_repos_count x $10${reset}`);
