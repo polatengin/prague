@@ -24,7 +24,7 @@ const params = {
 if (params.printVersion) {
   console.log();
   console.log(`${yellow}Version:${reset}`);
-  console.log(JSON.parse(readFileSync("package.json", 'utf8')).version);
+  console.log(JSON.parse(readFileSync("/usr/local/bin/prague/package.json", 'utf8')).version);
 }
 
 const err = validateAccountName(params.userName);
