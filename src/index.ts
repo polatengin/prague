@@ -71,21 +71,31 @@ const flags = {
                          (3 * value.repos.reduce((acc, repo) => acc + repo.forks_count, 0)) -
                          (-2 * value.repos.reduce((acc, repo) => acc + repo.open_issues_count, 0));
 
+  const blue = '\x1b[36m';
+  const green = '\x1b[32m';
+  const yellow = '\x1b[33m';
+  const reset = '\x1b[0m';
+
   if (flags.printRawJson) {
-    console.log(`Raw JSON data:`);
+    console.log(`${yellow}Raw JSON data:${reset}`);
     console.log(util.inspect(value, { colors: true, depth: null, compact: false }));
   }
 
   if (flags.printEstimatedValue) {
     console.log();
-    console.log('\x1b[33m%s\x1b[0m', `Estimated value:`);
-    console.log('\x1b[32m%s\x1b[0m', `\$${estimatedValue}`);
+    console.log(`${yellow}Estimated value:${reset}`);
+    console.log(`${green}\$${estimatedValue}${reset}`);
   }
 
   if (flags.printFormula) {
     console.log();
-    console.log('\x1b[33m%s\x1b[0m', `Formula:`);
-    console.log('\x1b[3m%s\x1b[0m', `10 * public_repos_count + 5 * public_gists_count + 2 * followers_count + 3 * sum(stargazers_count) + 3 * sum(forks_count) - 2 * sum(open_issues_count)`);
-    console.log('\x1b[36m%s\x1b[0m', `(10 * ${value.public_repos_count}) + (5 * ${value.public_gists_count}) + (2 * ${value.followers_count}) + (3 * ${value.repos.reduce((acc, repo) => acc + repo.stargazers_count, 0)}) + (3 * ${value.repos.reduce((acc, repo) => acc + repo.forks_count, 0)}) - (2 * ${value.repos.reduce((acc, repo) => acc + repo.open_issues_count, 0)}) = \$${estimatedValue}`);
+    console.log(`${yellow}Formula:${reset}`);
+    console.log(` ${blue}+ ($10 x ${value.public_repos_count}) \t ${reset} ${green}# public_repos_count x $10${reset}`);
+    console.log(` ${blue}+ ($5 x ${value.public_gists_count}) \t ${reset} ${green}# public_gists_count x $5${reset}`);
+    console.log(` ${blue}+ ($2 x ${value.followers_count}) \t ${reset} ${green}# followers_count x $2${reset}`);
+    console.log(` ${blue}+ ($3 x ${value.repos.reduce((acc, repo) => acc + repo.stargazers_count, 0)}) \t ${reset} ${green}# stargazers_count x $3${reset}`);
+    console.log(` ${blue}+ ($3 x ${value.repos.reduce((acc, repo) => acc + repo.forks_count, 0)}) \t ${reset} ${green}# forks_count x $3${reset}`);
+    console.log(` ${blue}- ($2 x ${value.repos.reduce((acc, repo) => acc + repo.open_issues_count, 0)}) \t ${reset} ${green}# open_issues_count x $2${reset}`);
+    console.log(` ${blue}= \$${estimatedValue}${reset}`);
   }
 })();
