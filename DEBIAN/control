@@ -1,8 +1,0 @@
-Package: prague
-Version: 0.0.1
-Section: utils
-Priority: optional
-Architecture: all
-Depends: nodejs (>= 20.0.0), npm
-Maintainer: Engin Polat <polatengin@hotmail.com>
-Description: Estimates the valuf of a given GitHub Account

@@ -1,7 +1,0 @@
-#!/bin/bash
-
-set -e
-
-ln -sf /usr/local/src/prague/index.js /usr/local/bin/prague
-
-exit 0
