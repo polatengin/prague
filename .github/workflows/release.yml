@@ -29,13 +29,15 @@ jobs:
 
           mkdir -p "prague-${VERSION}/DEBIAN"
 
-          echo "Package: prague" > "prague-${VERSION}/DEBIAN/control"
-          echo "Version: ${VERSION}" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Source: prague" >> "prague-${VERSION}/DEBIAN/control"
           echo "Section: utils" >> "prague-${VERSION}/DEBIAN/control"
           echo "Priority: optional" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Maintainer: Engin Polat <polatengin@hotmail.com>" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Build-Depends: debhelper-compat (= 13)" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Package: prague" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Version: ${VERSION}" >> "prague-${VERSION}/DEBIAN/control"
           echo "Architecture: all" >> "prague-${VERSION}/DEBIAN/control"
           echo "Depends: nodejs (>= 20.0.0), npm" >> "prague-${VERSION}/DEBIAN/control"
-          echo "Maintainer: Engin Polat <polatengin@hotmail.com>" >> "prague-${VERSION}/DEBIAN/control"
           echo "Description: Estimates the valuf of a given GitHub Account" >> "prague-${VERSION}/DEBIAN/control"
 
           echo "#!/bin/bash" > "prague-${VERSION}/DEBIAN/postinst"
