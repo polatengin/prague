@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 
+import { readFileSync } from 'fs';
 import util from 'util';
 
 import { fetchAccountDetails, fetchRepoDetails, fetchUserEvents, GitHubValueDetails, validateAccountName } from "./utils";
@@ -77,7 +78,14 @@ const flags = {
   const yellow = '\x1b[33m';
   const reset = '\x1b[0m';
 
+  if (flags.printVersion) {
+    console.log();
+    console.log(`${yellow}Version:${reset}`);
+    console.log(JSON.parse(readFileSync("package.json", 'utf8')).version);
+  }
+
   if (flags.printRawJson) {
+    console.log();
     console.log(`${yellow}Raw JSON data:${reset}`);
     console.log(util.inspect(value, { colors: true, depth: null, compact: false }));
   }
