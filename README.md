@@ -137,7 +137,11 @@ Estimated value:
 $6003
 
 Formula:
-10 * public_repos_count + 5 * public_gists_count + 2 * followers_count + 3 * sum(stargazers_count) + 3 * sum(forks_count) - 2 * sum(open_issues_count)
-
-(10 * 140) + (5 * 59) + (2 * 655) + (3 * 551) + (3 * 213) - (2 * 353)
+ + ($10 x 140)    # public_repos_count x $10
+ + ($5 x 59)      # public_gists_count x $5
+ + ($2 x 655)     # followers_count x $2
+ + ($3 x 551)     # stargazers_count x $3
+ + ($3 x 213)     # forks_count x $3
+ - ($2 x 353)     # open_issues_count x $2
+ = $6003
 ```
