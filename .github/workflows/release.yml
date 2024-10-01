@@ -24,8 +24,16 @@ jobs:
         run: |
           VERSION=$(jq -r '.version' ./package.json)
 
-          mkdir -p "prague-${VERSION}"
-          cp -r ./DEBIAN "prague-${VERSION}"
+          mkdir -p "prague-${VERSION}/DEBIAN"
+
+          echo "Package: prague" > "prague-${VERSION}/DEBIAN/control"
+          echo "Version: ${VERSION}" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Section: utils" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Priority: optional" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Architecture: all" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Depends: nodejs (>= 20.0.0), npm" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Maintainer: Engin Polat <polatengin@hotmail.com>" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Description: Estimates the valuf of a given GitHub Account" >> "prague-${VERSION}/DEBIAN/control"
 
           mkdir -p "prague-${VERSION}/usr/local/src/prague"
           cp ./_dist/* "prague-${VERSION}/usr/local/src/prague"
