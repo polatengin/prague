@@ -108,3 +108,4 @@ jobs:
             });
             uploadFileToRelease(releaseResponse.data.upload_url, `prague-${version}.deb`);
             uploadFileToRelease(releaseResponse.data.upload_url, `prague_${version}_source.build`);
+            uploadFileToRelease(releaseResponse.data.upload_url, `prague_${version}_source.buildinfo`);
