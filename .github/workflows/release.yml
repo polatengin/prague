@@ -35,6 +35,11 @@ jobs:
           echo "Maintainer: Engin Polat <polatengin@hotmail.com>" >> "prague-${VERSION}/DEBIAN/control"
           echo "Description: Estimates the valuf of a given GitHub Account" >> "prague-${VERSION}/DEBIAN/control"
 
+          echo "#!/bin/bash" > "prague-${VERSION}/DEBIAN/postinst"
+          echo "ln -s /usr/local/src/prague/index.js /usr/local/bin/prague" >> "prague-${VERSION}/DEBIAN/postinst"
+          echo "exit 0" >> "prague-${VERSION}/DEBIAN/postinst"
+          chmod +x "prague-${VERSION}/DEBIAN/postinst"
+
           mkdir -p "prague-${VERSION}/usr/local/src/prague"
           cp ./_dist/* "prague-${VERSION}/usr/local/src/prague"
 
