@@ -7,11 +7,6 @@ import { fetchAccountDetails, fetchRepoDetails, fetchUserEvents, GitHubValueDeta
 
 const args = process.argv.slice(2);
 
-if (args.length === 0) {
-  console.error('Error: Please provide a GitHub account name.');
-  process.exit(1);
-}
-
 const paramArgs = args.map(arg => arg.toLowerCase());
 const params = {
   printEstimatedValue : paramArgs.includes('--printestimatedvalue') || paramArgs.includes('--estimatedvalue') || paramArgs.includes('--value'),
