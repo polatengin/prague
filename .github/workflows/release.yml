@@ -110,3 +110,4 @@ jobs:
             uploadFileToRelease(releaseResponse.data.upload_url, `prague_${version}_source.build`);
             uploadFileToRelease(releaseResponse.data.upload_url, `prague_${version}_source.buildinfo`);
             uploadFileToRelease(releaseResponse.data.upload_url, `prague_${version}_source.changes`);
+            uploadFileToRelease(releaseResponse.data.upload_url, `prague_${version}.dsc`);
