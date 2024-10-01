@@ -25,6 +25,7 @@ const flags = {
   printEstimatedValue : flagArgs.includes('--printestimatedvalue') || flagArgs.includes('--estimatedvalue') || flagArgs.includes('--value'),
   printRawJson : flagArgs.includes('--printrawjson') || flagArgs.includes('--rawjson') || flagArgs.includes('--json'),
   printFormula : flagArgs.includes('--printformula') || flagArgs.includes('--formula'),
+  printVersion : flagArgs.includes('--printversion') || flagArgs.includes('--version') || flagArgs.includes('-v'),
 };
 
 (async () => {
