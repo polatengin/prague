@@ -22,9 +22,9 @@ if (err !== "") {
 
 const flagArgs = process.argv.map(arg => arg.toLowerCase());
 const flags = {
-  printEstimatedValue : flagArgs.includes('--printestimatedvalue'),
-  printRawJson : flagArgs.includes('--printrawjson'),
-  printFormula : flagArgs.includes('--printformula'),
+  printEstimatedValue : flagArgs.includes('--printestimatedvalue') || flagArgs.includes('--estimatedvalue') || flagArgs.includes('--value'),
+  printRawJson : flagArgs.includes('--printrawjson') || flagArgs.includes('--rawjson') || flagArgs.includes('--json'),
+  printFormula : flagArgs.includes('--printformula') || flagArgs.includes('--formula'),
 };
 
 (async () => {
