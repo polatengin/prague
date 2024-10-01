@@ -36,7 +36,6 @@ jobs:
           echo "Description: Estimates the valuf of a given GitHub Account" >> "prague-${VERSION}/DEBIAN/control"
 
           echo "#!/bin/bash" > "prague-${VERSION}/DEBIAN/postinst"
-          echo "rm -rf /usr/local/src/prague" >> "prague-${VERSION}/DEBIAN/postinst"
           echo "ln -s /usr/local/src/prague/index.js /usr/local/bin/prague" >> "prague-${VERSION}/DEBIAN/postinst"
           echo "exit 0" >> "prague-${VERSION}/DEBIAN/postinst"
           chmod +x "prague-${VERSION}/DEBIAN/postinst"
