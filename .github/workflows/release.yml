@@ -90,10 +90,12 @@ jobs:
           rm -rf ../_dist
 
           yes | debuild -S -us -uc -nc
-          ls -lah
           cd ..
-          echo "Done"
-          ls -lah
+
+          sudo add-apt-repository ppa:polatengin/ppa --yes
+          sudo apt update
+
+          dput ppa:polatengin/ppa ./prague_${VERSION}_source.changes
 
       - name: "Create release"
         uses: "actions/github-script@v7"
