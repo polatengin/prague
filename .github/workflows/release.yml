@@ -89,7 +89,10 @@ jobs:
           rm -rf ../_dist
 
           yes | debuild -S -us -uc -nc
+          ls -lah
           cd ..
+          echo "Done"
+          ls -lah
 
       - name: "Create release"
         uses: "actions/github-script@v7"
