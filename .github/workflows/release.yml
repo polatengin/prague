@@ -71,6 +71,10 @@ jobs:
           cd "prague-${VERSION}"
           mv "DEBIAN" "debian"
           chmod +x debian/rules
+          sed -i '/Build-Depends/a\\' "debian/control"
+          sed -i '/^Version:/d' "debian/control"
+          sed -i '/^Maintainer:/a Standards-Version: 4.6.2' "debian/control"
+
           cd ..
 
       - name: "Create release"
