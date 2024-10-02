@@ -66,8 +66,6 @@ jobs:
 
           dpkg-deb --build "prague-${VERSION}"
 
-          mv "prague-${VERSION}/DEBIAN" "prague-${VERSION}/debian"
-          sed -i '/Build-Depends/a\\' "prague-${VERSION}/debian/control"
           cd "prague-${VERSION}"
           mv "DEBIAN" "debian"
           chmod +x debian/rules
@@ -89,6 +87,8 @@ jobs:
 
           rm -rf ../node_modules
           rm -rf ../_dist
+
+          debuild -S -us -uc -nc
           cd ..
 
       - name: "Create release"
