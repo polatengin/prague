@@ -12,11 +12,13 @@ _GitHubValue_ cli tool that estimates the value of a _GitHub_ account.
 
 ## Installation
 
-Ensure at least _Node v20_ or newer is installed;
+Ensure `jq`, `node v20` or newer is installed;
 
 ```bash
+sudo apt install -y jq
+
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
-sudo apt-get install -y nodejs
+sudo apt install -y nodejs
 ```
 
 Download latest version of `prague`;
