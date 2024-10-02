@@ -75,6 +75,17 @@ jobs:
           sed -i '/^Version:/d' "debian/control"
           sed -i '/^Maintainer:/a Standards-Version: 4.6.2' "debian/control"
 
+          echo "Format: http://www.debian.org/doc/packaging-guide/ch- copyright.html" >> "debian/copyright"
+          echo "Upstream-Name: prague" >> "debian/copyright"
+          echo "Source: https://github.com/polatengin/prague" >> "debian/copyright"
+          echo "" >> "debian/copyright"
+          echo "Files: \*" >> "debian/copyright"
+          echo "Copyright: 2024 Engin Polat <polatengin@hotmail.com>" >> "debian/copyright"
+          echo "License: MIT" >> "debian/copyright"
+          echo "" >> "debian/copyright"
+          echo "Files: debian/\*" >> "debian/copyright"
+          echo "Copyright: 2024 Engin Polat <polatengin@hotmail.com>" >> "debian/copyright"
+          echo "License: GPL-3" >> "debian/copyright"
           cd ..
 
       - name: "Create release"
