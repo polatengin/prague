@@ -29,7 +29,7 @@ jobs:
 
           mkdir -p "prague-${VERSION}/DEBIAN"
 
-          echo "Source: prague" >> "prague-${VERSION}/DEBIAN/control"
+          echo "Source: prague" > "prague-${VERSION}/DEBIAN/control"
           echo "Section: utils" >> "prague-${VERSION}/DEBIAN/control"
           echo "Priority: optional" >> "prague-${VERSION}/DEBIAN/control"
           echo "Maintainer: Engin Polat <polatengin@hotmail.com>" >> "prague-${VERSION}/DEBIAN/control"
@@ -40,19 +40,21 @@ jobs:
           echo "Depends: nodejs (>= 20.0.0), npm" >> "prague-${VERSION}/DEBIAN/control"
           echo "Description: Estimates the value of a given GitHub Account" >> "prague-${VERSION}/DEBIAN/control"
 
-          echo "13" >> "prague-${VERSION}/DEBIAN/compat"
+          echo "13" > "prague-${VERSION}/DEBIAN/compat"
 
-          echo "#!/bin/bash" >> "prague-${VERSION}/DEBIAN/postinst"
+          echo '#!/bin/bash' > "prague-${VERSION}/DEBIAN/postinst"
+          echo "" >> "prague-${VERSION}/DEBIAN/postinst"
           echo "ln -s /usr/local/src/prague/index.js /usr/local/bin/prague" >> "prague-${VERSION}/DEBIAN/postinst"
           echo "exit 0" >> "prague-${VERSION}/DEBIAN/postinst"
           chmod +x "prague-${VERSION}/DEBIAN/postinst"
 
-          echo '#!/usr/bin/make -f' >> "prague-${VERSION}/DEBIAN/rules"
+          echo '#!/usr/bin/make -f' > "prague-${VERSION}/DEBIAN/rules"
           echo "" >> "prague-${VERSION}/DEBIAN/rules"
           echo "%:" >> "prague-${VERSION}/DEBIAN/rules"
           echo "	dh \$@" >> "prague-${VERSION}/DEBIAN/rules"
+          chmod +x "prague-${VERSION}/DEBIAN/rules"
 
-          echo "prague (${VERSION}) unstable; urgency=low" >> "prague-${VERSION}/DEBIAN/changelog"
+          echo "prague (${VERSION}) unstable; urgency=low" > "prague-${VERSION}/DEBIAN/changelog"
           echo "" >> "prague-${VERSION}/DEBIAN/changelog"
           echo "  * Initial release of Prague." >> "prague-${VERSION}/DEBIAN/changelog"
           echo "" >> "prague-${VERSION}/DEBIAN/changelog"
