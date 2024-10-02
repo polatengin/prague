@@ -69,7 +69,7 @@ jobs:
           mv "prague-${VERSION}/DEBIAN" "prague-${VERSION}/debian"
           sed -i '/Build-Depends/a\\' "prague-${VERSION}/debian/control"
           cd "prague-${VERSION}"
-          debuild -S -us -uc
+          mv "DEBIAN" "debian"
           cd ..
 
       - name: "Create release"
