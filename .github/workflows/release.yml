@@ -95,7 +95,7 @@ jobs:
           sudo add-apt-repository ppa:polatengin/ppa --yes
           sudo apt update
 
-          dput ppa:polatengin/ppa ./prague_${VERSION}_source.changes
+          dput ppa:polatengin/utils ./prague_${VERSION}_source.changes
 
       - name: "Create release"
         uses: "actions/github-script@v7"
