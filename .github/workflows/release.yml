@@ -17,17 +17,14 @@ jobs:
       - name: Install dependencies
         run: sudo apt update && sudo apt install devscripts -y
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
-
-      - name: Build project
-        run: npm run build
-
       - name: Create Debian package
         run: |
+          npm install
+
+          npm test
+
+          npm run build
+
           VERSION=$(jq -r '.version' ./package.json)
 
           mkdir -p "prague-${VERSION}/DEBIAN"
