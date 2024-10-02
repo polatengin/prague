@@ -70,6 +70,7 @@ jobs:
           sed -i '/Build-Depends/a\\' "prague-${VERSION}/debian/control"
           cd "prague-${VERSION}"
           mv "DEBIAN" "debian"
+          chmod +x debian/rules
           cd ..
 
       - name: "Create release"
